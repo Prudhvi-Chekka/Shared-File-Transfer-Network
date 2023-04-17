@@ -94,6 +94,28 @@ class Server(object):
                 sock = socket(AF_INET, SOCK_STREAM)
                 port = bind_to_random(sock)
                 sock.connect((str(self.ip), self.port))
+            if inp[0] in ['logs']:
+                conn, cursor = DBConnect()
+                try:
+                    cursor.execute("SELECT username, ip, login_time FROM login_details;")
+                    data1 = cursor.fetchall()
+                    print("Login details of the users")
+                    print('(username,', 'ip,', 'login_details)')
+                    for d in data1:
+                        print(d)
+                except:
+                    print("No entries in the table")
+            if inp[0] in ['users_info']:
+                conn, cursor = DBConnect()
+                try:
+                    cursor.execute("SELECT * FROM users;")
+                    data = cursor.fetchall()
+                    print("Users info:")
+                    print('(username,', 'password,', 'admin_access)')
+                    for d in data:
+                        print(d)
+                except:
+                    print("No entries in the table")
             elif len(inp) > 1:
                 msg = '|'.join(['#server'] + inp[1:])
                 if inp[0][:1] == '@':
@@ -103,7 +125,6 @@ class Server(object):
                     elif destination == 'all':
                         self.broadcast(msg)
                     elif destination == 'access':
-                        print("Here")
                         if inp[1] == 'Yes':
                             self.admin_access = 'Yes'
                     else:
