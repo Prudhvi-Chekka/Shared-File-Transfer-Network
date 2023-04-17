@@ -141,10 +141,13 @@ class ClientNode(object):
                                      'option:')
 
     def list_files(self, folder):
-        FileFound = 0
         print(os.listdir(folder))  # Shows all the files at server side
         list1 = os.listdir(folder)
-        send_list(self.socket, list1)
+        if not list1:
+            msg = 'Folder is empty'
+            send_data(self.socket, msg)
+        else:
+            send_list(self.socket, list1)
 
     def download_files_test(self, folder):
         self.list_files(folder)
@@ -241,8 +244,10 @@ class ClientNode(object):
         if self.suspended:
             return
         msg = decode_data(recv_data(self.socket))
-        option = str(msg[1]).lower()
-        print(msg, option)
+        if isinstance(msg, list) and len(msg) > 1:
+            option = str(msg[1]).lower()
+        else:
+            option = msg
         if option == 'list':
             self.list_files('folder')
         elif option == 'download':
@@ -269,12 +274,7 @@ class ClientNode(object):
                     send_err(self.socket, 'Max tries reached, closing connection.\n')
                     self.suspended = True
         else:
-            if tries > 0:
-                send_err(self.socket, 'Sorry, specify join/create to join or create a chatroom\n')
-                self.create_or_join(tries - 1)
-            else:
-                send_err(self.socket, 'Max tries reached, closing connection.\n')
-                self.suspended = True
+            send_err(self.socket, 'Please enter a valid option\n')
 
     def create_chatroom(self, tries=5):
         """
