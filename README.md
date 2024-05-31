@@ -1,4 +1,4 @@
-# Shared-File-Transfer-Network-Group
+# Shared-File-Transfer-Network
 
 SHARED FILE TRANSFER NETWORK
 
