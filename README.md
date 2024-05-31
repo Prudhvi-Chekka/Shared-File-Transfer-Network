@@ -108,9 +108,11 @@ Commands made available to the **server**:-
 `@username|chat`  
 `@all|chat`  
 `@server|chat`  
-exit	**Kill all client connections and exit application gracefully*
-How to interpret the results
-1.	Chat : Check for chat messages in terminal (Format: #sender|message from user)
-2.	File Transfer: Check for file existance inside folder or click on list and check it.
-3.	users.db: Check the database output and observe the timestamp,  port number  and username of the user. 
+`exit`	       *Kill all client connections and exit application gracefully*
+
+### How to interpret the results
+
+1.	Chat : Check for chat messages in terminal (Format: #sender|message from user)  
+2.	File Transfer: Check for file existance inside folder or click on list and check it.  
+3.	users.db: Check the database output and observe the timestamp,  port number  and username of the user.  
 
