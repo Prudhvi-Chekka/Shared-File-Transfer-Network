@@ -2,27 +2,33 @@
 
 SHARED FILE TRANSFER NETWORK
 
- File transfer implementing multi-threading application, let’s clients upload or download files from a central server. Additionally, clients can create or connect to temporary rooms and send messages and files to other clients. The server application will authenticate the users through password validation when a user tries to login. All message passing happens using TCP via server and file transfers happen via UDP protocol for better performance.
-Features
-•	Client Authentication: A unique username is required of each client while logging in, that enforces password-based authentication for access. 
-•	List: The client can list all the files from the server. 
-•	Upload: The client can upload files to the server. 
-•	Download: The client can download the files from the server. 
-•	Delete: The authorized client can delete the files from the server. When an authorized user is deleting a file, other users will not be able to perform any other action on the file. 
-•	File Access: Users are classified into three access groups where authorized users can upload, download and delete the files, the other group users have access to only upload and download the files and some users have only access to download the files. 
-•	Multithreading: With the help of multithreading, the server can handle multiple clients concurrently. The server assigns each client a thread to handle working for that client. 
-•	Logs: The server maintains an audit report which consists of login details, timestamp and client’s IP address of connected clients. 
-•	Temporary file transfer: The server provides the list of active users to the client, and they can share files with other clients in a temporary room and these files will no longer be available once all the users have left the room. 
+File transfer implementing multi-threading application, let’s clients upload or download files from a central server. Additionally, clients can create or connect to temporary rooms and send messages and files to other clients. The server application will authenticate the users through password validation when a user tries to login. All message passing happens using TCP via server and file transfers happen via UDP protocol for better performance.  
+ 
+### Features
 
-Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-Prerequisites
+•	**Client Authentication:** A unique username is required of each client while logging in, that enforces password-based authentication for access.  
+•	**List:** The client can list all the files from the server.  
+•	**Upload:** The client can upload files to the server.  
+•	**Download:** The client can download the files from the server.  
+•	**Delete:** The authorized client can delete the files from the server. When an authorized user is deleting a file, other users will not be able to perform any other action on the file.  
+•	**File Access:** Users are classified into three access groups where authorized users can upload, download and delete the files, the other group users have access to only upload and download the files and some users have only access to download the files.   
+•	**Multithreading:** With the help of multithreading, the server can handle multiple clients concurrently. The server assigns each client a thread to handle working for that client.  
+•	**Logs:** The server maintains an audit report which consists of login details, timestamp and client’s IP address of connected clients.   
+•	**Temporary file transfer:** The server provides the list of active users to the client, and they can share files with other clients in a temporary room and these files will no longer be available once all the users have left the room.  
+
+### Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.  
+
+#### Prerequisites
+
 You need to have Python 3.1 to run the application.
-Installing
-####Using Github
+
+#### Installing Using Github
 git clone https://github.com/Prudhvi-Chekka/Shared-File-Transfer-Network-Group
 
-Understanding how the code works:
+### Understanding how the code works:
+
 Here is a block diagram showing how clients connect to a specific chatroom on a server in the application:
 
 Following is a flow chart that depicts working of a server:
@@ -85,24 +91,24 @@ You can upload, download and delete files in the chatroom by entering
 
 ![image](https://user-images.githubusercontent.com/80088878/232373769-fa46e1b8-d8f4-49d8-9753-b812a360d6c4.png)
 
-Chat Options
-Chat commands made available to the user:-
-Command	Description
-`@username|chat`
-`@all|chat`
-`@server|chat`
-`@server|get_peers`
-`@server|exit`
-@server|list
-@server|download
-@server|upload
+### Chat Options
+Chat commands made available to the **user**:-  
 
-Commands made available to the server:-
-Command	Description
-`@username|chat`
-`@all|chat`
-`@server|chat`
-exit	Kill all client connections and exit application gracefully
+`@username|chat`  
+`@all|chat`  
+`@server|chat`  
+`@server|get_peers`  
+`@server|exit`  
+`@server|list`  
+`@server|download`  
+`@server|upload`  
+
+Commands made available to the **server**:-  
+
+`@username|chat`  
+`@all|chat`  
+`@server|chat`  
+exit	**Kill all client connections and exit application gracefully*
 How to interpret the results
 1.	Chat : Check for chat messages in terminal (Format: #sender|message from user)
 2.	File Transfer: Check for file existance inside folder or click on list and check it.
